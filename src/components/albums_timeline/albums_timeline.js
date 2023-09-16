@@ -7,7 +7,8 @@ const AlbumsTimeline = {
       albumId: null,
       albumData: null,
       error: null,
-      loading: true
+      loading: true,
+      footerRef: null
     }
   },
   components: {
@@ -43,6 +44,9 @@ const AlbumsTimeline = {
     this.$store.commit('clearTimeline', { timeline: 'album' })
   },
   methods: {
+    setFooterRef (el) {
+      this.footerRef = el
+    },
     loadAlbumData (albumId) {
       this.loading = true
       this.error = null

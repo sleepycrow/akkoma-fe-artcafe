@@ -14,20 +14,74 @@
     >
       Loading...
     </h1>
-    <Timeline
-      v-if="!loading && !error"
-      :title="albumTitle"
-      :timeline="timeline"
-      :album-id="albumId"
-      :plain-title="albumTitle"
-      timeline-name="album"
-    />
+
+    <div
+      v-if="albumData"
+      class="album-timeline-panel panel panel-default"
+    >
+      <div class="album-timeline-heading timeline-heading panel-heading">
+        <header>
+          <h2>{{ albumData.title }}</h2>
+          <div class="author-info">
+            <a href="">
+              <img
+                :src="albumData.account.avatar"
+                :alt="albumData.account.acct"
+              />
+              {{ ' ' }}
+              {{ albumData.account.acct }}
+            </a>
+          </div>
+        </header>
+
+        <p>{{ albumData.description }}</p>
+      </div>
+
+      <Timeline
+        v-if="!loading && !error"
+        :title="albumTitle"
+        :timeline="timeline"
+        :album-id="albumId"
+        :embedded="true"
+        timeline-name="album"
+        :footer-slipgate="footerRef"
+      />
+
+      <div
+        :ref="setFooterRef"
+        class="panel-footer"
+      />
+    </div>
   </div>
 </template>
 
 <script src="./albums_timeline.js"></script>
 
 <style type="text/css">
+.album-timeline-heading {
+  height: auto;
+  display: block;
+
+  header {
+    margin: 0.5rem 0;
+
+    h2 {
+      margin: 0.25rem 0;
+    }
+
+    .author-info img {
+      width: 1rem;
+      height: 1rem;
+      vertical-align: middle;
+      border-radius: 50%;
+    }
+  }
+
+  p {
+    margin: 0.5rem 0;
+  }
+}
+
 .error-box{
   border: 1px solid rgba(204, 2, 2, 1);
   background-color: rgba(204, 2, 2, 0.5);

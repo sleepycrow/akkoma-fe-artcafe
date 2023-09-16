@@ -23,7 +23,6 @@ const Timeline = {
     'userId',
     'listId',
     'albumId',
-    'plainTitle',
     'tag',
     'embedded',
     'count',
