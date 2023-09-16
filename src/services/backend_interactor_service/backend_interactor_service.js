@@ -5,10 +5,11 @@ import listsFetcher from '../../services/lists_fetcher/lists_fetcher.service.js'
 import announcementsFetcher from '../../services/announcements_fetcher/announcements_fetcher.service.js'
 import configFetcher from '../config_fetcher/config_fetcher.service.js'
 import reportsFetcher from '../reports_fetcher/reports_fetcher.service.js'
+import albumsFetcher from '../albums_fetcher/albums_fetcher.service.js'
 
 const backendInteractorService = credentials => ({
-  startFetchingTimeline ({ timeline, store, userId = false, listId = false, tag }) {
-    return timelineFetcher.startFetching({ timeline, store, credentials, userId, listId, tag })
+  startFetchingTimeline ({ timeline, store, userId = false, listId = false, albumId = false, tag }) {
+    return timelineFetcher.startFetching({ timeline, store, credentials, userId, listId, albumId, tag })
   },
 
   fetchTimeline (args) {
@@ -37,6 +38,10 @@ const backendInteractorService = credentials => ({
 
   startFetchingReports ({ store, state, limit, page, pageSize }) {
     return reportsFetcher.startFetching({ store, credentials, state, limit, page, pageSize })
+  },
+  
+  startFetchingAlbums ({ store }) {
+    return albumsFetcher.startFetching({ store, credentials })
   },
 
   startUserSocket ({ store }) {

@@ -24,6 +24,8 @@ import statusHistoryModule from './modules/statusHistory.js'
 import tagModule from './modules/tags.js'
 import recentEmojisModule from './modules/recentEmojis.js'
 
+import albumsModule from './modules/albums.js'
+
 import { createI18n } from 'vue-i18n'
 
 import createPersistedState from './lib/persisted_state.js'
@@ -102,6 +104,7 @@ const persistedStateOptions = {
       statusHistory: statusHistoryModule,
       tags: tagModule,
       recentEmojis: recentEmojisModule,
+      albums: albumsModule
     },
     plugins,
     strict: false // Socket modifies itself, let's ignore this for now.

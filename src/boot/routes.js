@@ -24,6 +24,9 @@ import ListEdit from 'components/list_edit/list_edit.vue'
 import AnnouncementsPage from 'components/announcements_page/announcements_page.vue'
 import RegistrationRequestSent from 'components/registration_request_sent/registration_request_sent.vue'
 import AwaitingEmailConfirmation from 'components/awaiting_email_confirmation/awaiting_email_confirmation.vue'
+import Albums from '../components/albums/albums.vue'
+import AlbumsTimeline from '../components/albums_timeline/albums_timeline.vue'
+import AlbumsEdit from '../components/albums_edit/albums_edit.vue'
 
 export default (store) => {
   const validateAuthenticatedRoute = (to, from, next) => {
@@ -79,7 +82,12 @@ export default (store) => {
     { name: 'list-timeline', path: '/lists/:id', component: ListTimeline },
     { name: 'list-edit', path: '/lists/:id/edit', component: ListEdit },
     { name: 'announcements', path: '/announcements', component: AnnouncementsPage },
-    { name: 'user-profile', path: '/:_(users)?/:name', component: UserProfile, meta: { dontScroll: true } }
+    { name: 'user-profile', path: '/:_(users)?/:name', component: UserProfile, meta: { dontScroll: true } },
+    
+    { name: 'albums', path: '/albums', component: Albums },
+    { name: 'albums-timeline', path: '/albums/:id', component: AlbumsTimeline },
+    { name: 'albums-edit', path: '/albums/:id/edit', component: AlbumsEdit },
+    { name: 'albums-new', path: '/albums/new', component: AlbumsEdit },
   ]
 
   return routes
