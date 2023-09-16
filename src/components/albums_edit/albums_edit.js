@@ -5,6 +5,8 @@ const AlbumsNew = {
     return {
       title: '',
       titleDraft: '',
+      description: '',
+      descriptionDraft: '',
       isPublic: true,
       isPublicDraft: true,
       reallyDelete: false
@@ -26,6 +28,9 @@ const AlbumsNew = {
         this.title = album.title
         this.titleDraft = this.title
 
+        this.description = album.description
+        this.descriptionDraft = this.description
+
         this.isPublic = album.is_public
         this.isPublicDraft = this.isPublic
       })
@@ -45,7 +50,14 @@ const AlbumsNew = {
   },
   methods: {
     updateAlbum () {
-      this.$store.dispatch('setAlbum', { albumId: this.id, title: this.titleDraft, isPublic: this.isPublicDraft })
+      const payload = {
+        albumId: this.id,
+        title: this.titleDraft,
+        description: this.descriptionDraft,
+        isPublic: this.isPublicDraft
+      }
+
+      this.$store.dispatch('setAlbum', payload)
         .then(() => {
           const album = this.findAlbum(this.id)
           if (!album) {
@@ -57,6 +69,7 @@ const AlbumsNew = {
           }
 
           this.title = album.title
+          this.description = album.description
           this.isPublic = album.is_public
         })
         .catch((e) => {

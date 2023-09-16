@@ -29,13 +29,13 @@ const actions = {
     commit('setAlbums', value)
   },
 
-  setAlbum ({ rootState, commit }, { albumId, title, isPublic }) {
-    return rootState.api.backendInteractor.updateAlbum({ albumId, title, isPublic })
+  setAlbum ({ rootState, commit }, { albumId, title, description, isPublic }) {
+    return rootState.api.backendInteractor.updateAlbum({ albumId, title, description, isPublic })
       .then(album => commit('setAlbum', album))
   },
 
-  createAlbum ({ rootState, commit }, { title, isPublic }) {
-    return rootState.api.backendInteractor.createAlbum({ title, isPublic })
+  createAlbum ({ rootState, commit }, { title, description, isPublic }) {
+    return rootState.api.backendInteractor.createAlbum({ title, description, isPublic })
       .then(album => {
         commit('setAlbum', album)
         return album

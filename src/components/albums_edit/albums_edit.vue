@@ -41,6 +41,17 @@
       </div>
 
       <div class="input-wrap">
+        <label for="album-edit-description">{{ $t('albums.description') }}</label>
+        <br>
+        <textarea
+          id="album-edit-description"
+          ref="description"
+          v-model="descriptionDraft"
+          class="description-textarea"
+        />
+      </div>
+
+      <div class="input-wrap">
         <label for="album-edit-is-public">{{ $t('albums.is_public') }}</label>
         {{ ' ' }}
         <input
@@ -121,10 +132,15 @@
 
   .panel-body {
     overflow: hidden;
+    padding: 0 16px;
   }
 
   .input-wrap {
     margin: 1rem 0;
+  }
+
+  .description-textarea {
+    width: 100%;
   }
 
   .go-back-button {
