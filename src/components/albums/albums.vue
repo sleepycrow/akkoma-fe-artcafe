@@ -14,7 +14,7 @@
 
     <div class="panel-body">
       <AlbumsCard
-        v-for="album in albums.slice().reverse()"
+        v-for="album in albums"
         :key="album"
         :album="album"
         class="album-item"
