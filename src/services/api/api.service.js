@@ -117,7 +117,7 @@ const MASTODON_FOLLOWED_TAGS_URL = '/api/v1/followed_tags'
 const ARTCAFE_ALBUMS_URL = '/api/v1/artcafe/albums'
 const ARTCAFE_ALBUM_URL = id => `/api/v1/artcafe/albums/${id}`
 const ARTCAFE_ALBUM_TIMELINE_URL = id => `/api/v1/artcafe/albums/${id}/content`
-// const ARTCAFE_PUBLIC_USER_ALBUMS_URL = id => `/api/v1/artcafe/accounts/${id}/albums`
+const ARTCAFE_PUBLIC_USER_ALBUMS_URL = id => `/api/v1/artcafe/accounts/${id}/albums`
 // const ARTCAFE_ALBUMS_FOR_STATUS_URL = id => `/api/v1/artcafe/statuses/${id}/albums`
 
 const oldfetch = window.fetch
@@ -1795,6 +1795,12 @@ const deleteAlbum = ({ albumId, credentials }) => {
   })
 }
 
+const fetchPublicUserAlbums = ({ credentials, userId }) => {
+  const url = ARTCAFE_PUBLIC_USER_ALBUMS_URL(userId)
+  return fetch(url, { headers: authHeaders(credentials) })
+    .then(data => data.json())
+}
+
 const apiService = {
   verifyCredentials,
   fetchTimeline,
@@ -1920,7 +1926,8 @@ const apiService = {
   createAlbum,
   getAlbum,
   updateAlbum,
-  deleteAlbum
+  deleteAlbum,
+  fetchPublicUserAlbums
 }
 
 export default apiService
