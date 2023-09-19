@@ -2,11 +2,22 @@
   <div class="album-card">
     <router-link
       :to="{ name: 'albums-timeline', params: { id: album.id } }"
-      class="album-name"
+      class="album-link"
     >
-      {{ album.title }}
+      <div class="album-title">{{ album.title }}</div>
+      <div class="album-description">{{ album.description }}</div>
+      <div class="album-author">
+        <img
+          :src="album.account.avatar"
+          :alt="album.account.acct"
+        >
+        {{ ' ' }}
+        {{ album.account.acct }}
+      </div>
     </router-link>
+
     <router-link
+      v-if="isOwnedByCurrentUser(album)"
       :to="{ name: 'albums-edit', params: { id: album.id } }"
       class="button-album-edit"
     >
@@ -27,11 +38,34 @@
   display: flex;
 }
 
-.album-name {
+.album-link {
   flex-grow: 1;
+
+  .album-title {
+    font-size: 1.5rem;
+  }
+
+  .album-description,
+  .album-author {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: $fallback--lightText;
+  }
+
+  .album-description {
+    margin: 0.5rem 0;
+  }
+
+  .album-author img {
+    width: 1rem;
+    height: 1rem;
+    vertical-align: middle;
+    border-radius: 50%;
+  }
 }
 
-.album-name,
+.album-link,
 .button-album-edit {
   margin: 0;
   padding: 1em;
@@ -48,5 +82,11 @@
     --faintLink: var(--selectedMenuFaintLink, $fallback--faint);
     --lightText: var(--selectedMenuLightText, $fallback--lightText);
   }
+}
+
+.button-album-edit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>
