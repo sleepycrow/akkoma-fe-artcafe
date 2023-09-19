@@ -36,7 +36,7 @@ const AlbumsNew = {
       })
       .catch((e) => {
         this.$store.dispatch('pushGlobalNotice', {
-          messageKey: 'albums.error',
+          messageKey: 'general.generic_error_message',
           messageArgs: [e.message],
           level: 'error'
         })
@@ -74,20 +74,26 @@ const AlbumsNew = {
         })
         .catch((e) => {
           this.$store.dispatch('pushGlobalNotice', {
-            messageKey: 'albums.error',
+            messageKey: 'general.generic_error_message',
             messageArgs: [e.message],
             level: 'error'
           })
         })
     },
     createAlbum () {
-      this.$store.dispatch('createAlbum', { title: this.titleDraft, isPublic: this.isPublicDraft })
+      const payload = {
+        title: this.titleDraft,
+        description: this.descriptionDraft,
+        isPublic: this.isPublicDraft
+      }
+
+      this.$store.dispatch('createAlbum', payload)
         .then(({ id }) => {
           this.$router.push({ name: 'albums-timeline', params: { id } })
         })
         .catch((e) => {
           this.$store.dispatch('pushGlobalNotice', {
-            messageKey: 'albums.error',
+            messageKey: 'general.generic_error_message',
             messageArgs: [e.message],
             level: 'error'
           })

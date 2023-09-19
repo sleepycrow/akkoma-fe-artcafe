@@ -323,7 +323,8 @@
         "twkn": "Known Network",
         "twkn_timeline_description": "Posts from the entire network",
         "user_search": "User Search",
-        "who_to_follow": "Who to follow"
+        "who_to_follow": "Who to follow",
+        "albums": "Albums"
     },
     "notifications": {
         "broken_favorite": "Unknown post, searching for it…",
@@ -1191,7 +1192,8 @@
         "unfollow_tag": "Unfollow hashtag",
         "unmute": "Unmute",
         "unmute_progress": "Unmuting…",
-        "unsubscribe": "Unsubscribe"
+        "unsubscribe": "Unsubscribe",
+        "albums": "Albums"
     },
     "user_profile": {
         "profile_does_not_exist": "Sorry, this profile does not exist.",
@@ -1211,5 +1213,18 @@
     "who_to_follow": {
         "more": "More",
         "who_to_follow": "Who to follow"
+    },
+    "albums": {
+      "albums": "Albums",
+      "new": "New Album",
+      "edit_album": "Edit Album \"{albumTitle}\"",
+      "title": "Title",
+      "description": "Description",
+      "is_public": "Should this album be public?",
+      "create": "Create",
+      "save": "Save",
+      "delete": "Delete",
+      "really_delete": "Really delete this album?",
+      "err_not_found": "This album could not be found."
     }
 }
