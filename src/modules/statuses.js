@@ -315,7 +315,7 @@ const addNewStatuses = (state, { statuses, showImmediately = false, timeline, us
   })
 
   // Keep the visible statuses sorted
-  if (timeline && !(timeline === 'bookmarks')) {
+  if (timeline && !['bookmarks', 'album'].includes(timeline)) {
     sortTimeline(timelineObject)
   }
 }
