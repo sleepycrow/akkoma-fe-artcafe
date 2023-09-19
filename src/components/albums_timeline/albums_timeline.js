@@ -1,4 +1,5 @@
 import { mapState } from 'vuex'
+import generateProfileLink from 'src/services/user_profile_link_generator/user_profile_link_generator'
 import Timeline from '../timeline/timeline.vue'
 
 const AlbumsTimeline = {
@@ -17,6 +18,12 @@ const AlbumsTimeline = {
   computed: {
     timeline () { return this.$store.state.statuses.timelines.album },
     albumTitle () { return this.albumData ? this.albumData.title : '' },
+    authorProfileLink () {
+      return generateProfileLink(
+        this.albumData.account.id, this.albumData.account.acct,
+        this.$store.state.instance.restrictedNicknames
+      )
+    },
     ...mapState({
       backendInteractor: state => state.api.backendInteractor
     })

@@ -23,14 +23,14 @@
         <header>
           <h2>{{ albumData.title }}</h2>
           <div class="author-info">
-            <a href="">
+            <router-link :to="authorProfileLink">
               <img
                 :src="albumData.account.avatar"
                 :alt="albumData.account.acct"
               >
               {{ ' ' }}
               {{ albumData.account.acct }}
-            </a>
+            </router-link>
           </div>
         </header>
 
