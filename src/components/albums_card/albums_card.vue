@@ -4,8 +4,12 @@
       :to="{ name: 'albums-timeline', params: { id: album.id } }"
       class="album-link"
     >
-      <div class="album-title">{{ album.title }}</div>
-      <div class="album-description">{{ album.description }}</div>
+      <div class="album-title">
+        {{ album.title }}
+      </div>
+      <div class="album-description">
+        {{ album.description }}
+      </div>
       <div class="album-author">
         <img
           :src="album.account.avatar"
@@ -40,6 +44,17 @@
 
 .album-link {
   flex-grow: 1;
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+
+  .album-title,
+  .album-description,
+  .album-author {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 
   .album-title {
     font-size: 1.5rem;
@@ -47,9 +62,6 @@
 
   .album-description,
   .album-author {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
     color: $fallback--lightText;
   }
 

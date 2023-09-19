@@ -52,14 +52,15 @@
       </div>
 
       <div class="input-wrap">
-        <label for="album-edit-is-public">{{ $t('albums.is_public') }}</label>
-        {{ ' ' }}
         <input
           id="album-edit-is-public"
           ref="isPublic"
           v-model="isPublicDraft"
           type="checkbox"
         >
+        <label for="album-edit-is-public">
+          {{ $t('albums.public_album') }}
+        </label>
       </div>
     </div>
 
@@ -137,6 +138,10 @@
 
   .input-wrap {
     margin: 1rem 0;
+
+    input[type="checkbox"] {
+      display: none;
+    }
   }
 
   .description-textarea {

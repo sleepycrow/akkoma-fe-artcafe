@@ -38,7 +38,7 @@ const UserAlbumList = {
       this.error = null
       this.loadedUserId = null
 
-      this.backendInteractor.fetchPublicUserAlbums({ userId: userId })
+      this.backendInteractor.fetchPublicUserAlbums({ userId })
         .then(albums => {
           if (albums.error) {
             throw albums.error

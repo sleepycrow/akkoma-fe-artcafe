@@ -58,19 +58,15 @@ const AlbumsNew = {
       }
 
       this.$store.dispatch('setAlbum', payload)
-        .then(() => {
-          const album = this.findAlbum(this.id)
-          if (!album) {
-            this.$store.dispatch('pushGlobalNotice', {
-              messageKey: 'albums.err_not_found',
-              level: 'error'
-            })
-            return
-          }
-
+        .then(album => {
           this.title = album.title
+          this.titleDraft = this.title
+
           this.description = album.description
+          this.descriptionDraft = this.description
+
           this.isPublic = album.is_public
+          this.isPublicDraft = this.isPublic
         })
         .catch((e) => {
           this.$store.dispatch('pushGlobalNotice', {
