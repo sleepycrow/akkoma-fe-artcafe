@@ -7,7 +7,10 @@
       v-if="loading"
       class="centered-loading-spinner"
     >
-      <FAIcon spin icon="circle-notch"/>
+      <FAIcon
+        spin
+        icon="circle-notch"
+      />
     </div>
 
     <AlbumsCard
@@ -20,10 +23,3 @@
 </template>
 
 <script src="./user_album_list.js"></script>
-
-<style lang="scss">
-.centered-loading-spinner {
-  text-align: center;
-  padding: 1rem;
-}
-</style>

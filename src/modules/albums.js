@@ -1,7 +1,8 @@
 import { remove, find, findIndex } from 'lodash'
 
 export const defaultState = {
-  allAlbums: []
+  allAlbums: [],
+  albumAddModalStatusId: null
 }
 
 export const mutations = {
@@ -21,6 +22,11 @@ export const mutations = {
 
   deleteAlbum (state, albumId) {
     remove(state.allAlbums, album => album.id === albumId)
+  },
+
+  setAlbumAddModalStatusId (state, statusId) {
+    state.albumAddModalStatusId = statusId
+    console.log(state)
   }
 }
 
@@ -31,7 +37,10 @@ const actions = {
 
   setAlbum ({ rootState, commit }, { albumId, title, description, isPublic }) {
     return rootState.api.backendInteractor.updateAlbum({ albumId, title, description, isPublic })
-      .then(album => commit('setAlbum', album))
+      .then(album => {
+        commit('setAlbum', album)
+        return album
+      })
   },
 
   createAlbum ({ rootState, commit }, { title, description, isPublic }) {
@@ -50,6 +59,10 @@ const actions = {
   updateAlbums ({ rootState, commit }) {
     return rootState.api.backendInteractor.fetchAlbums()
       .then(albums => commit('setAlbums', albums))
+  },
+
+  setAlbumAddModalStatusId ({ commit }, statusId) {
+    commit('setAlbumAddModalStatusId', statusId)
   }
 }
 
